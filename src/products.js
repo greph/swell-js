@@ -1,5 +1,5 @@
-const { map, reduce, find, uniq, defaultMethods, toSnake, toCamel } = require('./utils');
-const cache = require('./cache');
+import { reduce, find, uniq, defaultMethods, toSnake, toCamel } from './utils';
+import cache  from './cache';
 
 let OPTIONS;
 
@@ -318,8 +318,8 @@ function getPriceRange(products) {
   };
 }
 
-module.exports = {
-  methods,
+export {
+  methods as default,
   cleanProductOptions,
   getProductOptionIndex,
   getVariantOptionValueIds,

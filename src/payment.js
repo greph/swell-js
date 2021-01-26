@@ -1,15 +1,15 @@
-const get = require('lodash/get');
-const toLower = require('lodash/toLower');
-const pick = require('lodash/pick');
-const cartApi = require('./cart');
-const settingsApi = require('./settings');
-const { isFunction, vaultRequest } = require('./utils');
-const {
+import get from 'lodash/get';
+import toLower from 'lodash/toLower';
+import pick from 'lodash/pick';
+import cartApi from './cart';
+import settingsApi from './settings';
+import { isFunction, vaultRequest } from './utils';
+import {
   createPaymentMethod,
   createIDealPaymentMethod,
   createKlarnaSource,
   createBancontactSource,
-} = require('./utils/stripe');
+} from './utils/stripe';
 
 const LOADING_SCRIPTS = {};
 const CARD_ELEMENTS = {};
@@ -437,6 +437,4 @@ async function paymentTokenize(request, params, payMethods, cart) {
   }
 }
 
-module.exports = {
-  methods,
-};
+export default methods;
