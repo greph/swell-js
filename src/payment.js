@@ -1,6 +1,5 @@
 import get from 'lodash/get';
 import toLower from 'lodash/toLower';
-import pick from 'lodash/pick';
 import cartApi from './cart';
 import settingsApi from './settings';
 import { isFunction, vaultRequest } from './utils';
@@ -319,9 +318,8 @@ async function paymentTokenize(request, params, payMethods, cart) {
                 billing: {
                   method: 'card',
                   card: paymentMethod,
-                  stripe_payment_intent: {
-                    ...pick(paymentIntent, ['id', 'amount', 'client_secret']),
-                    status: undefined,
+                  intent: {
+                    stripe: { id: paymentIntent.id },
                   },
                 },
               })
@@ -372,10 +370,7 @@ async function paymentTokenize(request, params, payMethods, cart) {
               ideal: {
                 token: paymentMethod.id,
               },
-              stripe_payment_intent: {
-                ...intent,
-                status: undefined,
-              },
+              intent: { stripe: { id: intent.id } },
             },
           })
           .catch((err) => onError(err));

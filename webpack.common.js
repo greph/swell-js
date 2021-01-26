@@ -2,7 +2,7 @@ var path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/api.ts'),
+  entry: path.resolve(__dirname, 'src/api.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'swell-js.js',
@@ -13,12 +13,12 @@ module.exports = {
   module: {
     rules: [
         {
-          test: /\.(js|jsx|tsx|ts)$/,
+          test: /\.(js|jsx|tsx?)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
+              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
               sourceType: 'unambiguous',
             },
           },
@@ -33,6 +33,10 @@ module.exports = {
       new CleanWebpackPlugin()
   ],
   externals:[
-    /^lodash\/.+$/
+    /^lodash\/.+$/,
+    'qs',
+    'isomorphic-fetch',
+    'object-keys-normalizer',
+    'deepmerge',
   ]
 };
