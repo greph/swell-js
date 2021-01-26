@@ -2,7 +2,7 @@ var path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/api.js'),
+  entry: path.resolve(__dirname, 'src/api.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'swell-js.js',
@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
         {
-          test: /\.(js)$/,
+          test: /\.(js|jsx|tsx|ts)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -25,6 +25,9 @@ module.exports = {
         },
         { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
       new CleanWebpackPlugin()

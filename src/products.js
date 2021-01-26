@@ -318,8 +318,9 @@ function getPriceRange(products) {
   };
 }
 
+export default methods;
+
 export {
-  methods as default,
   cleanProductOptions,
   getProductOptionIndex,
   getVariantOptionValueIds,
