@@ -1,4 +1,4 @@
-const { get, find, set, merge, toCamel } = require('./utils');
+import { get, find, set, merge, toCamel } from './utils';
 
 function methods(request, opt) {
   return {
@@ -85,6 +85,4 @@ function methods(request, opt) {
   };
 }
 
-module.exports = {
-  methods,
-};
+export default methods;
